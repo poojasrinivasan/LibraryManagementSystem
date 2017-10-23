@@ -199,12 +199,17 @@ public class BooksController {
 		int card_id=Integer.parseInt(cardid);
 		double totalfine=fineService.getTotalFine(card_id);		
 		List<Fines> bookFineList=fineService.getFineForEachBook(card_id);
+		int listsize=-1;
+		if(bookFineList.size()==0){
+			
+			listsize=0;
+		}
 		FineForm fineform=new FineForm();
 		fineform.setBookFineList(bookFineList);
 		model.addObject("cardid",cardid);
 		model.addObject("BookFineform",fineform);
 		model.addObject("totalfine", totalfine);
-		
+		model.addObject("listSize", listsize);
 		model.setViewName("finedetails");
         return model;
     }

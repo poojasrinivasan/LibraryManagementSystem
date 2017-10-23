@@ -79,9 +79,10 @@ public class FineDaoImpl implements FineDao {
     
     @SuppressWarnings("unchecked")
     public List<Fines> getFineForEachBook(int cardid){
-    	String hql="from Fines F where F.loan_id in (SELECT B.loan_id FROM Book_Loans B where B.card_id=:cardid)";
+    	String hql="from Fines F where F.loan_id in (SELECT B.loan_id FROM Book_Loans B where B.card_id=:cardid) and F.paid=:paid";
     	Query query=sessionFactory.getCurrentSession().createQuery(hql);
     	 query.setParameter("cardid",cardid);
+    	 query.setParameter("paid",0);
     	 List<Fines> result=query.list();
     	 return result;
     }

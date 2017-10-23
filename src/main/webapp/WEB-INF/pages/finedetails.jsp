@@ -63,6 +63,8 @@ $(function() {
   Card_id:${cardid}
   Total fine due:${totalfine}
   <br/>
+       
+    <c:if test = "${listSize!=0}">
     <form:form id="form3" modelAttribute="BookFineform" action="payFine" method="post">
 
        
@@ -71,7 +73,7 @@ $(function() {
             <th>Loan_id</th>
             <th>Fine_Amt</th>
             <th>Paid</th>
-          
+  
           
             <c:forEach items="${BookFineform.bookFineList}" var="book" varStatus="status">
 		<tr>
@@ -100,7 +102,7 @@ $(function() {
           <input type="button" class="btn btn-outline-primary" name="pay" id="pay" value="PayFine"></input>
             
              </form:form>
-         
+         </c:if>
               
   </div>
 

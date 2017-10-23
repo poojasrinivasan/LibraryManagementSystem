@@ -29,17 +29,7 @@ public class BookdaoImpl implements Bookdao
     	   query.executeUpdate();
     	   
       }
-      public void createAuthorTable(){
-   	  String hql="insert into Author(author_id,name) Select authorid,author from BookDetails group by authorid";
-   	   Query query=sessionFactory.getCurrentSession().createQuery(hql);
-	   query.executeUpdate();
-      }
-      public void createBookAuthorTable(){
-    	  String hql="insert into Book_Author(authorid,isbn) Select a.authorid,b.isbn10 from BookDetails b,Author a where a.name=b.name and a.name=:";
-    	  Query query=sessionFactory.getCurrentSession().createQuery(hql);
-    	 
-      	query.executeUpdate();
-        }
+     
       @SuppressWarnings("unchecked")
       public List<BookDetails> getBooklist(String value){
     	 /* String hql="from BookDetails where title LIKE CONCAT('%', :titlename, '%') 
